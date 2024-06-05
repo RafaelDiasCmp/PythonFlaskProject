@@ -1,0 +1,25 @@
+ <form class="c-form" 
+      action="{{ url_for('responsavel.inserir_responsavel') }}" 
+      method="POST"
+      c-append="#lista-produtos">
+
+    <div class="form-label mb-3 mt-3">
+      <label class="form-label">Nome do Produto</label>
+      <input type="text" class="form-control" name="nome">
+    </div>
+
+    <div class="form- mb-3 mt-3">
+      <label class="form-label">Preço do Produto</label>
+      <input type="text" class="form-control" name="preco">
+    </div>
+  
+  
+  <div class="form- mb-3 mt-3">
+    <label class="form-label">Quantidade do Produto</label>
+    <input type="text" class="form-control" name="qtde">
+  </div>
+</div>
+
+  <button type="submit" class="btn btn-primary">Criar Produto</button>
+
+</form>
