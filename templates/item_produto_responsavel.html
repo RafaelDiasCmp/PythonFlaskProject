@@ -1,13 +1,25 @@
-<tr>
+<tr id="produto-{{produto.id}}">
     <th scope="row">{{ produto.id }}</th>
     <td>{{ produto.nome }}</td>
     <td>{{ produto.preco }}</td>
     <td>{{ produto.qtde }}</td>
     <td>
-        <button class="btn btn-primary">Editar</button>
+        
         <button class="btn btn-primary" 
-        c-delete="{{ url_for('responsavel.deletar_produto', responsavel_id=produto.id) }}"
-        c-remove-closest="tr">
+        c-get="{{ url_for('responsavel.detalhe_produtos', produto_id=produto.id) }}"
+        c-target="#exibir-produto"
+        data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Ver
+        </button>
+
+        <button class="btn btn-primary" 
+        c-get="{{ url_for('responsavel.editar_form_produtos', produto_id=produto.id) }}"
+        c-target="#form-produto">
+            Editar
+        </button>
+
+        <button class="btn btn-primary"
+            c-delete="{{ url_for('responsavel.deletar_produto', produto_id=produto.id) }}" c-remove-closest="tr">
             Deletar
         </button>
     </td>

@@ -1,25 +1,37 @@
- <form class="c-form" 
-      action="{{ url_for('responsavel.inserir_responsavel') }}" 
-      method="POST"
-      c-append="#lista-produtos">
+<form class="c-form" 
+{% if produto %}
+            action="{{ url_for('responsavel.atualizar_form_produtos', produto_id=produto.id) }}" 
+        {% else %}
+            action="{{ url_for('responsavel.inserir_produtos') }}" 
+        {% endif %}
 
-    <div class="form-label mb-3 mt-3">
+        method="{% if produto %}PUT{% else %}POST{% endif %}"
+        
+        {% if produto %}
+            c-swap="#produto-{{produto.id}}"
+        {% else %}
+            c-append="#lista-produtos"
+        {% endif %}
+        >
+        
+   
+    <div class="mb-3">
       <label class="form-label">Nome do Produto</label>
-      <input type="text" class="form-control" name="nome">
+      <input type="text" class="form-control" name="nome" {% if produto %}value="{{produto.nome}}"{% endif %} required>
     </div>
 
-    <div class="form- mb-3 mt-3">
-      <label class="form-label">Preço do Produto</label>
-      <input type="text" class="form-control" name="preco">
+    <div class="mb-3">
+        <label id="label-target" class="form-label">Preço do Produto</label>
+        <input type="number" class="form-control" name="preco" {% if produto %}value="{{produto.preco}}"{% endif %} required>
     </div>
-  
-  
-  <div class="form- mb-3 mt-3">
-    <label class="form-label">Quantidade do Produto</label>
-    <input type="text" class="form-control" name="qtde">
+
+    <div class="mb-3">
+      <label id="label-target" class="form-label">Quantidade</label>
+      <input type="number" class="form-control" name="qtde" {% if produto %}value="{{produto.qtde}}"{% endif %} required>
   </div>
-</div>
+  
 
-  <button type="submit" class="btn btn-primary">Criar Produto</button>
-
+    <button type="submit" class="btn btn-primary">
+        {% if produto %}Salvar{% else %}Criar{% endif %}
+    </button>
 </form>
