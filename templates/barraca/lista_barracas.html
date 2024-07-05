@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Barracas</title>
+</head>
+<body>
+    <h1>Lista de Barracas</h1>
+    <a href="{{ url_for('barraca.form_barraca') }}">Cadastrar Nova Barraca</a>
+    <ul>
+        {% for barraca in barracas %}
+        <li>
+            <a href="{{ url_for('barraca.detalhe_barraca', barraca_id=barraca.id) }}">{{ barraca.nome }}</a> - Responsável: {{ barraca.responsavel }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

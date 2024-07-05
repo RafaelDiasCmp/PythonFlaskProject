@@ -12,6 +12,7 @@ def configure_all(app):
 def configure_routes(app):
     app.register_blueprint(home_route)
     app.register_blueprint(responsavel_route, url_prefix='/responsavel')
+    app.register_blueprint(barraca_route, url_prefix='/barracas')
 
 
 def configure_db():

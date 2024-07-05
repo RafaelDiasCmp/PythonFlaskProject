@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Barraca</title>
+</head>
+<body>
+    <h1>Detalhes da Barraca: {{ barraca.nome }}</h1>
+    <p>Responsável: {{ barraca.responsavel }}</p>
+    <h2>Produtos</h2>
+    <ul>
+        {% for produto_barraca in produtos %}
+        <li>{{ produto_barraca.produto.nome }} - Preço: {{ produto_barraca.produto.preco }} - Quantidade: {{ produto_barraca.produto.qtde }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('barraca.lista_barracas') }}">Voltar</a>
+</body>
+</html>
